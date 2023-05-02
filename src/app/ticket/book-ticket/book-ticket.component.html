@@ -1,0 +1,63 @@
+<section id="ticket">
+    <div class="custom-container">
+      <h3 style="color: red">{{errorMessage | json}}</h3>
+      <form [formGroup]="ticketForm" (ngSubmit)="addATicket()">
+        <div class="form-row">
+          <div class="form-group">
+            <div class="input-data" *ngIf="displayElement"> 
+              <input 
+                type="text"
+                class="form-control"
+                formControlName="username"
+                readonly
+                required
+              />
+            </div>
+            <div class="input-data" > 
+              <input 
+                type="text"
+                class="form-control"
+                formControlName="movieName"
+                readonly
+                required
+              />
+              <div class="underline"></div>
+              <label for=""></label>
+            </div>
+            <br>
+            <div class="input-data" > 
+              <input 
+                type="text"
+                class="form-control"
+                formControlName="theatreName"
+                readonly
+                required
+              />
+              <div class="underline"></div>
+              <label for=""></label>
+            </div>
+            <br>
+            <p *ngIf="availableSeats==0">
+              SOLD OUT
+            </p>
+            <div class="input-data">
+              <input
+                type="number"
+                min="0"
+                max="{{availableSeats}}"
+                class="form-control"
+                formControlName="noOfSeats"
+                required
+              />
+              <div class="underline"></div>
+              <label for="">No of Seats</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Add Booking</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  

@@ -1,0 +1,57 @@
+<section id="ticket">
+    <div class="custom-container">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showAlert">
+        Seats Added Successfully!! Proceed to 
+        <a href="#" class="alert-link"  [routerLink]="['/movie/view',moviePk.movieName,moviePk.theatreName]">Viewing Movies</a>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+      <form [formGroup]="addticketForm" (ngSubmit)="addSeats()">
+        <div class="form-row">
+          <div class="form-group">
+            <div class="input-data" > 
+              <input 
+                type="text"
+                class="form-control"
+                formControlName="movieName"
+                readonly
+                required
+              />
+              <div class="underline"></div>
+              <label for=""></label>
+            </div>
+            <br>
+            <div class="input-data" > 
+              <input 
+                type="text"
+                class="form-control"
+                formControlName="theatreName"
+                readonly
+                required
+              />
+              <div class="underline"></div>
+              <label for=""></label>
+            </div>
+            <br>
+            <div class="input-data">
+              <input
+                type="number"
+                min="0"
+                max="{{availableSeats}}"
+                class="form-control"
+                formControlName="noOfSeats"
+                required
+              />
+              <div class="underline"></div>
+              <label for="">No of Seats</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Add Tickets</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  

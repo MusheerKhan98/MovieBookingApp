@@ -1,0 +1,122 @@
+<section>
+    <div class="custom-container">
+       <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showAlert">
+       Registered Successfully!! Proceed to 
+       <a href="#" class="alert-link"  [routerLink]="['/signIn']">Sign In</a>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorBool">
+        {{errorMessage}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="customerForm" (ngSubmit)="addCustomer()">
+        <div class="form-row">
+          <div class="form-group">
+              <div class="row">
+            <div class="col input-data">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+                required
+              />
+              <div class="underline"></div>
+              <label for="">First Name</label>
+              <p *ngIf="customerForm.get('firstName').invalid &&
+              (customerForm.get('firstName').touched || customerForm.get('firstName').dirty)"
+               
+                class="text-danger">
+                First Name is required</p>
+            </div>
+            <div class="col input-data">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="lastName"
+                />
+                <div class="underline"></div>
+                <label for="">Last Name</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="form-group">
+            <div class="row">
+              <div class="col input-data">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="loginId"
+                  required
+                />
+                <div class="underline"></div>
+                <label for="">Username</label>
+                <p *ngIf="customerForm.get('loginId').invalid &&
+              (customerForm.get('loginId').touched || customerForm.get('loginId').dirty)"
+               
+                class="text-danger">
+                Username is required</p>
+              </div>
+              <div class="col input-data">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="contactNumber"
+                />
+                <div class="underline"></div>
+                <label for="">Mobile Number</label>
+                <p *ngIf="customerForm.get('contactNumber').invalid &&
+              (customerForm.get('contactNumber').touched || customerForm.get('contactNumber').dirty)"        
+                class="text-danger">
+                Must be in +91 followed by digits format</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="form-group">
+            <div class="row">
+              <div class="col input-data">
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                />
+                <div class="underline"></div>
+                <label for="">Email Id</label>
+              </div>
+              <div class="col input-data">
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                  required
+                />
+                <div class="underline"></div>
+                <label for="">Password</label>
+                <div *ngIf="customerForm.get('password').invalid &&
+            (customerForm.get('password').touched || customerForm.get('password').dirty)"
+              class="text-danger">
+              Password must contain more than 8 characters, 1 numeric, 1 upper case letter, and 1 special character($@$!%*?&).</div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div>
+          <button 
+          type="submit"
+           class="btn btn-primary button-margin"
+           [disabled]="!customerForm.valid">Register</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  

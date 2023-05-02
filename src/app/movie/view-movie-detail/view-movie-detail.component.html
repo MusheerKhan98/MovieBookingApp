@@ -1,0 +1,73 @@
+<section id="detailMovie">
+    <div class="container">
+      <div class="section-title">
+        <h1><i class="icofont icofont-film"></i>{{ movieName }}</h1>
+      </div>
+      <hr />
+      <div class="details">
+        <div class="row flexbox-center">
+          <div class="col-lg-5 text-lg-left text-center">
+            <div class="movieDetails-content">
+              <img [src]="'data:image/png;base64,'
+             +this.mvee.movieImage.image.data" alt="">
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="movieDetails-content">
+              <h2>{{ mvee.moviePK.movieName }}</h2>
+              <p>{{ mvee.movieGenre }}</p>
+              <ul>
+                <li>
+                  <div class="movieDetail-left">Movie:</div>
+                  <div class="movieDetail-right">
+                    <a href="#">{{ mvee.moviePK.movieName }}</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="movieDetail-left">Time:</div>
+                  <div class="movieDetail-right">{{ mvee.movieHours }} hrs</div>
+                </li>
+                <li>
+                  <div class="movieDetail-left">Release:</div>
+                  <div class="movieDetail-right">{{ mvee.movieDate }}</div>
+                </li>
+                <li>
+                  <div class="movieDetail-left">Language:</div>
+                  <div class="movieDetail-right">{{ mvee.movieLanguage }}</div>
+                </li>
+                <li>
+                  <div class="movieDetail-left">Rating:</div>
+                  <div class="movieDetail-right">{{ mvee.movieRating }}</div>
+                </li>
+                <li>
+                  <div class="movieDetail-left">Description:</div>
+                  <div class="movieDetail-right">
+                    {{ mvee.movieDescription }}
+                  </div>
+                </li>
+                <li>  
+                  <div class="movieDetail-right" *ngIf="lService.getUserRole()">
+                    <a
+                    [routerLink]="['/ticket/addSeats', mvee.moviePK.movieName,mvee.moviePK.theatreName]"
+                    class="theme-btn"
+                    ><i class="icofont-ticket"></i> Add Tickets</a
+                  >
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+         
+        </div>
+       
+        <a
+         [routerLink]="['/ticket', mvee.moviePK.movieName,mvee.moviePK.theatreName]"
+          class="theme-btn"
+          ><i class="icofont-ticket"></i> BOOK MOVIE</a
+        >
+      </div>
+    </div>
+  </section>
+  
