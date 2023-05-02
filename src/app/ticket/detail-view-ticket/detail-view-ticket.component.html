@@ -1,0 +1,40 @@
+<section id="detailMovie">
+    <div class="container">
+      <div class="section-title">
+        <h1><i class="icofont icofont-film"></i>Booking Summary</h1>
+      </div>
+      <hr />
+      <div class="details">
+        <div class="row flexbox-center">
+          <div class="col-lg-7">
+            <div class="movieDetails-content">
+              <h2>Booking Details</h2>
+              <br />
+              <ul>
+                <li>
+                  <div class="movieDetail-left">Movie:</div>
+                  <div class="movieDetail-right">
+                    <a href="#">{{ ticket.movie.moviePK.movieName }}</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="movieDetail-left">Theatre Name:</div>
+                  <div class="movieDetail-right">{{ ticket.movie.moviePK.theatreName }}</div>
+                </li>
+                <div class="movieDetail-left">Seat Numbers:</div>
+                <li *ngFor="let seat of ticket.seatNumber">
+                  <div class="movieDetail-right">
+                    {{ seat }}
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a [routerLink]="['/movie']" class="theme-btn"
+          ><i class="icofont-ticket"></i>Back to MOVIES</a
+        >
+      </div>
+    </div>
+  </section>
+  
